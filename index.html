@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Database</title>
+</head>
+<body>
+    <h1>Database</h1>
+
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Enter You Name"><br><br>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter You Email"><br><br>
+    <button onclick="sendData()">Send Data</button>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyDNehmn-3VWPOK8TO1bEh-BZoilVEYM_wI",
+            authDomain: "database-b3bdf.firebaseapp.com",
+            projectId: "database-b3bdf",
+            storageBucket: "database-b3bdf.appspot.com",
+            messagingSenderId: "830856381757",
+            appId: "1:830856381757:web:f8bdc1b7ac21b578837154",
+            measurementId: "G-ZMEDSMQ827"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        var database = firebase.database();
+
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+
+        function sendData() {
+            firebase.database().ref('users/' + " " + name.value).set({
+                name_data: name.value,
+                email_data: email.value
+            })
+            alert("Your Data Has Been Successfully Sent");
+        }
+    </script>
+</body>
+</html>
